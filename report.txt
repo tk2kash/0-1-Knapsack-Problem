@@ -1,0 +1,120 @@
+Dynamic Programming
+===================
+
+Why does the 0/1 Knapsack Problem have the three necessary properties for dynamic programming?
+
+1. Simple Subproblems
+divding the problem into sub problem in knapsack its the case item = true or false
+2. Subproblem Optimality
+if the optimal solution of the given problem can be obtained using optimal solutions of its sub-problems. in this case it would be find the best value for each instance. 
+3. Subproblem Overlap
+if there is a sub program that is calculated again then it can be avoid by storing is a array but in this case it would be the table(2d array)
+
+Greedy
+======
+
+1.  Why is a greedy approach not necessarily optimal for 0/1 Knapsack?
+	it wont be optimal because it will only got through limited solution when it takes the first value.
+	since it looped to fit the rest in based on the first value.(no backtracking)
+
+2.  Is the greedy approach optimal for the Fractional Knapsack problem?  Explain your reasoning.
+	yes,because it will always obatain the maximun capacity using fractions.
+	for instance [5,4,2] capcity = 10 then Fractional Knapsack will obtain 5 + 4 + (1/2) * 2.
+	hence its optimal.
+
+Testing
+=======
+
+1.  Why can't you use full enumeration for large instances?
+we can't because the time taken will the number of possible solution that can be obtained from the data set which can be extremely high.
+the calculation would be 2**(number of items).
+
+Suppose one evaluation of a solutions takes 1 microsecond, how large an instance do you think can be practically solved in an hour?  Justify your answer.
+
+for the calculation it would be
+	1 sec is 1000000 micro second 
+	60 * 60 * 1000000 = no of solution which is 3600000000
+	to find the max number of item 
+	log2(3600000000) = 31.74..
+	there for 31 items can be solve in an hour.
+
+
+2.  Fill in the table below for each test set, noting whether or not you killed the algorithm.  Result should indicate whether the correct optimal solution has been found.  This should be 377 for easy.20.1.txt, 4077 for easy.200.4.txt, 126968 for hard1.200.11.txt and 1205259 for hard1.2000.1.txt.  You can generate this output using test.sh if you wish.
+
+===========================================
+easy.20.1.txt time set = 10 second
+===========================================
+Algorithm |      Optimal Value       | Time Taken  | Result
+enum      | 377                      | 0m7.096s    | Yes
+bnb       | 377                      | 0m0.069s    | Yes
+dp        | 377                      | 0m0.042s    | Yes
+greedy    | 296                      | 0m0.039s    | ?
+
+===========================================
+easy.200.4.txt time set = 10 second
+===========================================
+Algorithm |      Optimal Value       | Time Taken  | Result
+enum      | -                        | 0m10.008s   | -		(killed)
+bnb       | 4077                     | 0m0.315s    | Yes
+dp        | 4077                     | 0m0.295s    | Yes
+greedy    | 2568                     | 0m0.036s    | ?
+
+===========================================
+hard1.200.11.txt time set = 150 second
+===========================================
+Algorithm |      Optimal Value       | Time Taken  | Result
+enum      | -                        | 2m30.006s   | -		(killed)
+bnb       | 126682                   | 1m23.173s   | ?		(incorrect)
+dp        | 126968                   | 0m10.053s   | Yes
+greedy    | 101257                   | 0m0.042s    | ?
+
+
+
+===========================================
+hard1.2000.1.txt time set = 30 minitues
+===========================================
+Algorithm |      Optimal Value       | Time Taken  | Result
+enum      | -                        | 0m0.041s    | -
+bnb       | -                        | 3m0.016s    | -
+dp        | 1205259                  | 23m33.436s  | Yes
+greedy    | 942196                   | 0m0.099s    | ?
+
+So for instance if you are running the program using the bnb algorithm on the hard1.200.11.txt and kill the program after it has been running for 1 minute and the best solution at that point has 126756 in the knapsack then you should note that you killed the program and write
+
+bnb    126756	1 min  incorrect (killed)
+
+If on the other hand you were running the program using the bnb algorithm on the easy.20.1.txt and it completed after 1 second with a value of 377 then you should write
+
+bnb    377	1 second correct 
+
+Note that some knapsack implementations generate candidate solutions as they go so you can get the program to print its current best solution, while other implementations do not produce a candidate solution until the end.
+
+3.  Which instances does greedy solve optimally?
+easy.20.1.txt because it has less item compared to the others and the differnce between the solution and the greedy solution is the least.
+
+Does dynamic programming work on all instances and why/why not?
+yes, because in knapsack its can be divided into sub program and when they have overlap subprogram it will be under the criteia of dynamic programing(working at its best).
+
+Does branch-and-bound come to a stop on all instances in reasonable time?
+No,for easy it does but in hard there is a huge time difference.
+
+4.  Can you explain WHY the hard1 instances are easy or hard (cause problems) for
+    i) greedy
+    ii) branch-and-bound
+    iii) dynamic programming
+
+    i) easy because it is linear when it come to calculating the optimal solution since its depend on the ratio.
+
+    ii) Hard because it is expotential.node are true or false hence takes longer 
+
+    iii) easy because it does backing tracking and doesnt repeat same calcutations.
+
+5.  The airline has problems of size 500-2000 of similar type to the hard1 instances.  Which algorithms do you recommend using and why?
+
+Dynamic programing because it is fast and always return the optimal value.
+
+What should they do in the case the algorihm runs out of time?
+
+improve the code to make it faster and give more time.
+
+
