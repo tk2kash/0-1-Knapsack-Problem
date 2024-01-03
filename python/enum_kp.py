@@ -23,7 +23,7 @@ class enum_knapsack(knapsack):
         self.QUIET = True
         best_value = 0 # total value packed in the best solution
         while (not self.next_binary(solution, self.Nitems)):
-            # ADD CODE IN HERE TO KEEP TRACK OF FRACTION OF ENUMERATION DONE
+            
             i += 1
             if (i > ten):
                 sys.stdout.write('\r')
@@ -35,7 +35,7 @@ class enum_knapsack(knapsack):
 
             # calculates the value and weight and feasibility
             infeasible = self.check_evaluate_and_print_sol(solution)
-            # ADD CODE TO PRINT OUT BEST SOLUTION
+            #PRINT OUT BEST SOLUTION
 
             if (infeasible == False):
                 if (self.total_value >= best_value):
