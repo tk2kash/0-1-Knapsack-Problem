@@ -26,13 +26,12 @@ class dp(knapsack):
         # The are both of size (n + 1)*(W + 1)
         
         # Initialise V and keep
-        # ADD CODE HERE
         y = n + 1
         x = W + 1
         V = [[None for i in range(x)] for j in range(y)]
         keep = [[None for i in range(x)] for j in range(y)] #keeping track of the items
         # Set the values of the zeroth row of the partial solutions table to False
-        # ADD CODE HERE
+
         
         for w in range(0,W+1):
             V[0][w] = 0
@@ -40,7 +39,6 @@ class dp(knapsack):
             V[i][0] = 0
 
         # main dynamic programming loops, adding on item at a time and looping through weights from 0 to W
-        # ADD CODE HERE
         for i in range(1,y): #loop of item
             for w in range(1,x): #loop of weight
                 wi = wv[i]
@@ -54,7 +52,6 @@ class dp(knapsack):
 
 
         # now discover which iterms were in the optimal solution
-        # ADD CODE HERE
         K = W
         for i in range(n,0,-1):
             if (keep[i][K] == 1):
