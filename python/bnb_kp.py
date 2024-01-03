@@ -159,7 +159,6 @@ class bnb(knapsack):
         # RETURN
   
 
-        # YOUR CODE GOES HERE
         solution = struc_sol()
 
         #intialsed the val,bound,fixed in struc_sol() class
