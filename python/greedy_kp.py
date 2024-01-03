@@ -14,7 +14,6 @@ class greedy(knapsack):
         
         self.sort_by_ratio() # sort by profit-to-weight ratio
         
-        # ADD CODE HERE TO COMPUTE THE GREEDY SOLUTION
         for i in range(1, len(self.temp_indexes)):
             #getting each value and weight
             index = self.temp_indexes[i] 
